@@ -1,7 +1,7 @@
 import { DataProvider } from '@devfamily/admiral';
 import _ from '../../config/request';
 
-const apiUrl = 'https://archive.timing71.org';
+const apiUrl = 'http://localhost:3001' //'https://archive.timing71.org';
 
 export const replayDataProvider: DataProvider = {
 
@@ -36,8 +36,7 @@ export const replayDataProvider: DataProvider = {
   },
 
   getCreateFormData: (resource) => {
-      const url = `${apiUrl}/${resource}/create`
-      return _.get(url)({})
+    throw new Error('Create not implemented for replays!');
   },
 
   getFiltersFormData: (resource) => {
@@ -52,18 +51,17 @@ export const replayDataProvider: DataProvider = {
   },
 
   create: (resource, params) => {
-      const url = `${apiUrl}/${resource}`
-      return _.post(url)({ data: params.data })
+      throw new Error('Create not implemented for replays!');
   },
 
   getUpdateFormData: (resource, params) => {
-      const url = `${apiUrl}/${resource}/${params.id}/update`
-      return _.get(url)({ params })
+      const url = `${apiUrl}/${resource}/${params.id}`
+      return _.get(url)({ params }).then(data => ({ data, values: {} }))
   },
 
   update: (resource, params) => {
       const url = `${apiUrl}/${resource}/${params.id}`
-      return _.post(url)({ data: params.data })
+      return _.patch(url)({ data: filterNullValues(params.data) })
   },
 
   deleteOne: (resource, params) => {
@@ -88,3 +86,9 @@ export const replayDataProvider: DataProvider = {
   }
 
 }
+
+const filterNullValues = (obj: object) => Object.fromEntries(
+  Object.entries(obj).filter(
+    ([k, v]) => !!v
+  )
+);

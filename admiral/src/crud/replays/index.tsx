@@ -1,5 +1,5 @@
-import { createCRUD, TextInput, PasswordInput, SelectInput, BooleanInput } from '@devfamily/admiral'
-import React from 'react'
+import { createCRUD, TextInput, PasswordInput, SelectInput, BooleanInput, DatePickerInput } from '@devfamily/admiral'
+import React from 'react';
 
 export const CRUD = createCRUD({
     path: '/replays',
@@ -38,6 +38,18 @@ export const CRUD = createCRUD({
                 key: 'duration',
                 render: (value) => new Date(value * 1000).toLocaleTimeString()
             },
+            {
+                title: 'Replay file',
+                dataIndex: 'filename',
+                key: 'filename',
+                render: (url) => <a href={url}>[Link]</a>
+            },
+            {
+                title: 'Analysis file',
+                dataIndex: 'analysisFilename',
+                key: 'analysisFilename',
+                render: (url) => <a href={url}>[Link]</a>
+            },
         ],
     },
     filter: {
@@ -52,12 +64,7 @@ export const CRUD = createCRUD({
   },
     form: {
         create: {
-            fields: (
-                <>
-                  <TextInput label="Series" name="series" placeholder="Series" required />
-                  <TextInput label="Description" name="description" placeholder="Session description" required />
-                </>
-            ),
+            fields: null,
         },
         edit: {
             fields: (
@@ -67,9 +74,6 @@ export const CRUD = createCRUD({
                 </>
             ),
         },
-    },
-    create: {
-        title: 'Create Replay',
     },
     update: {
         title: (id: string) => `Edit Replay #${id}`,

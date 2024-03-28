@@ -56,6 +56,23 @@ function _post(url: string) {
     }
 }
 
+function _patch(url: string) {
+    return (query: AxiosRequestConfig = {}) => {
+        const { cancelToken = axios.CancelToken.source().token, data, headers } = query
+        const token = storage.get(tokenStorageKey)
+
+        return axios
+            .patch(url, data, {
+                headers: {
+                    ...headers,
+                    ...(token && { Authorization: `Bearer ${token}` }),
+                },
+                cancelToken,
+            })
+            .then((response) => response.data)
+    }
+}
+
 function _postFD(url: string) {
     return (query: AxiosRequestConfig = {}) => {
         const { cancelToken = axios.CancelToken.source().token, data, headers } = query
@@ -78,6 +95,7 @@ function _postFD(url: string) {
 export default {
     delete: _delete,
     get: _get,
+    patch: _patch,
     post: _post,
     postFD: _postFD,
 }

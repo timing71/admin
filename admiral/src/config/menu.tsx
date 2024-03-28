@@ -5,6 +5,7 @@ const CustomMenu = () => {
     return (
         <Menu>
             <MenuItemLink name="Replays" to="/replays" icon="FiFilm" />
+            <MenuItemLink name="Replay errors" to="/errors" icon="FiFilm" />
             <MenuItemLink name="Users" to="/users" icon="FiUser" />
         </Menu>
     )

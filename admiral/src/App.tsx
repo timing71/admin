@@ -6,6 +6,7 @@ import authProvider from './config/authProvider'
 import '@devfamily/admiral/style.css'
 import { multiDataProvider } from './config/multiDataProvider'
 import { replayDataProvider } from './crud/replays/dataProvider'
+import { errorsDataProvider } from './crud/errors/dataProvider'
 // import themeLight from './config/theme/themeLight'
 // import themeDark from './config/theme/themeDark'
 
@@ -17,7 +18,8 @@ const replaysDataProvider = replayDataProvider;
 
 const mdp = multiDataProvider({
     'users': usersDataProvider,
-    'replays': replaysDataProvider
+    'replays': replaysDataProvider,
+    'errors': errorsDataProvider
 })
 
 function App() {

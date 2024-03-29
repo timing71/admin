@@ -5,7 +5,7 @@ export default {
         host: process.env.HOST || 'localhost',
     },
     jwt: {
-        secret: 'secret',
+        secret: process.env.JWT_SHARED_SECRET!,
     },
     admin: {
         url: '/admin/',

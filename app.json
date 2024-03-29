@@ -1,0 +1,9 @@
+{
+  "name": "t71-admin",
+  "scripts": {
+    "dokku": {
+      "predeploy": "yarn run prisma:generate"
+    },
+    "postdeploy": "yarn run prisma:seed"
+  }
+}

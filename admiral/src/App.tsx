@@ -10,7 +10,7 @@ import { errorsDataProvider } from './crud/errors/dataProvider'
 // import themeLight from './config/theme/themeLight'
 // import themeDark from './config/theme/themeDark'
 
-const apiUrl = import.meta.env.ADMIN_API_URL || '/api'
+const apiUrl = import.meta.env.VITE_ADMIN_API_URL || '/api'
 const Routes = createRoutesFrom(import.meta.globEager('../pages/**/*'))
 
 const usersDataProvider = dataProvider(apiUrl);

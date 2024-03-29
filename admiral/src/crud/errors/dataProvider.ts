@@ -1,7 +1,7 @@
 import { DataProvider } from '@devfamily/admiral';
 import _ from '../../config/request';
 
-const apiUrl = import.meta.env.ARCHIVE_URL || 'https://archive.timing71.org';
+const apiUrl = import.meta.env.VITE_ARCHIVE_URL || 'https://archive.timing71.org';
 
 export const errorsDataProvider: DataProvider = {
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { auth } from './auth';
-import { users } from './users';
+import { auth } from './auth/index.js';
+import { users } from './users/index.js';
 
 export default (): Router => {
     const app = Router();

@@ -1,7 +1,8 @@
-import authService from './auth.service';
 import type { Response, Request, NextFunction } from 'express';
-import authHttpContext from './auth.http.context';
 import { z } from 'zod';
+
+import authService from './auth.service.js';
+import authHttpContext from './auth.http.context.js';
 
 export default {
     async login(req: Request, res: Response, next: NextFunction) {

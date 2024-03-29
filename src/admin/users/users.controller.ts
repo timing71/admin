@@ -1,6 +1,6 @@
 import type { Response, Request } from 'express';
-import usersService from './users.service';
 import { z } from 'zod';
+import usersService from './users.service.js';
 
 export default {
     async index(req: Request, res: Response) {

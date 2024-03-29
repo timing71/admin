@@ -1,7 +1,7 @@
 import express from 'express';
-import config from '../config';
-import { setupServer } from './utils';
-import setupServerMiddleware from './middleware';
+import config from '../config/index.js';
+import { setupServer } from './utils/index.js';
+import setupServerMiddleware from './middleware/index.js';
 
 const { server } = config;
 

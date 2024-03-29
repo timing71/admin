@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
-import { JsonWebTokenError } from 'jsonwebtoken';
-import { CustomError } from '../errors/custom.error';
+import jwt from 'jsonwebtoken';
+import { CustomError } from '../errors/custom.error.js';
+
+const { JsonWebTokenError } = jwt;
 
 export default (error: Error, req: Request, res: Response, next: NextFunction): void => {
     if (error instanceof CustomError) {

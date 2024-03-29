@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { jwtManager } from '../../features';
-import authHttpContext from './auth.http.context';
+import { jwtManager } from '../../features/index.js';
+import authHttpContext from './auth.http.context.js';
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const [_, token] = (req.headers.authorization ?? '').split(' ');

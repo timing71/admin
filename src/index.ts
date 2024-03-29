@@ -1,4 +1,4 @@
-import startServer from './server';
+import startServer from './server/index.js';
 
 startServer()
     .then(() => console.log('Server start success!'))

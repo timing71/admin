@@ -10,5 +10,8 @@
         "typeRoots": ["./node_modules/@types", "./src/types"],
         "target": "es2020",
         "moduleResolution": "Node",
-    }
+    },
+    "exclude": [
+        "admiral/"
+      ]
 }

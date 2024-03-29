@@ -2,7 +2,8 @@
     "name": "express-crud-admiral",
     "version": "0.0.1",
     "description": "Example of CRUD with Express and Admiral Panel",
-    "main": "src/index.tsx",
+    "main": "dist/index.js",
+    "type": "module",
     "scripts": {
         "start": "ts-node src/index.ts",
         "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",

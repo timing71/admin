@@ -1,9 +1,9 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import errorMiddleware from './error.middleware';
-import config from '../../config';
-import routes from '../../admin';
+import errorMiddleware from './error.middleware.js';
+import config from '../../config/index.js';
+import routes from '../../admin/index.js';
 
 export default ({ app }: { app: Application }): void => {
     app.use(cors());
@@ -18,4 +18,3 @@ export default ({ app }: { app: Application }): void => {
 
     app.use(errorMiddleware);
 }
-

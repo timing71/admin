@@ -1,7 +1,8 @@
-import { jwtManager } from '../../features';
 import { PrismaClient } from '@prisma/client';
 import crypto from 'crypto';
-import { CustomError } from '../../server/errors/custom.error';
+
+import { jwtManager } from '../../features/index.js';
+import { CustomError } from '../../server/errors/custom.error.js';
 
 const prisma = new PrismaClient();
 

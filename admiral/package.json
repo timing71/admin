@@ -15,6 +15,7 @@
         "react-dom": "^17.0.0"
     },
     "devDependencies": {
+        "@types/node": "^20.11.30",
         "@types/qs": "^6.9.7",
         "@types/react": "^17.0.40",
         "@types/react-dom": "^17.0.13",

@@ -1,7 +1,7 @@
 import { DataProvider } from '@devfamily/admiral';
 import _ from '../../config/request';
 
-const apiUrl = 'http://localhost:3001' //'https://archive.timing71.org';
+const apiUrl = process.env.ARCHIVE_URL || 'https://archive.timing71.org';
 
 export const replayDataProvider: DataProvider = {
 

@@ -1,5 +1,6 @@
-import { createCRUD, TextInput, PasswordInput, SelectInput, BooleanInput, DatePickerInput } from '@devfamily/admiral'
 import React from 'react';
+import { createCRUD, TextInput } from '@devfamily/admiral';
+import { format } from 'date-fns';
 
 export const CRUD = createCRUD({
     path: '/replays',
@@ -29,14 +30,14 @@ export const CRUD = createCRUD({
                 key: 'startTime',
                 render: (value) => {
                   const date = new Date(value * 1000);
-                  return `${date.toDateString()} ${date.toLocaleTimeString()}`
+                  return format(date, "yyyy-MM-dd HH:mm")
                 },
             },
             {
                 title: 'Duration',
                 dataIndex: 'duration',
                 key: 'duration',
-                render: (value) => new Date(value * 1000).toLocaleTimeString()
+                render: timeWithHours
             },
             {
                 title: 'Replay file',
@@ -78,4 +79,26 @@ export const CRUD = createCRUD({
     update: {
         title: (id: string) => `Edit Replay #${id}`,
     },
-})
+});
+
+/**
+ * Format a time in seconds to (HH:)?MM:SS, allowing HH to be > 23 if needed.
+ * @param {number} seconds
+ * @returns {string} Formatted time HH:MM:SS.
+ */
+export function timeWithHours(seconds: number): string {
+    const hours = Math.floor(seconds / 3600);
+    seconds -= (3600 * hours);
+    const minutes = Math.floor(seconds / 60);
+    seconds = Math.floor(seconds - (60 * minutes));
+
+    const hoursStr = `${hours}`.padStart(2, '0');
+    const minutesStr = `${minutes}`.padStart(2, '0');
+    const secondsStr = `${seconds}`.padStart(2, '0');
+
+    if (hours > 0) {
+        return `${hoursStr}:${minutesStr}:${secondsStr}`;
+    }
+
+    return `${minutesStr}:${secondsStr}`;
+  };

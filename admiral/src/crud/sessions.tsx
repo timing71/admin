@@ -36,12 +36,28 @@ export const CRUD = createCRUD({
                   const date = new Date(value);
                   return format(date, "yyyy-MM-dd HH:mm")
                 },
+                width: 200
             },
             {
                 title: 'Duration',
                 dataIndex: 'durationSeconds',
                 key: 'durationSeconds',
-                render: timeWithHours
+                render: timeWithHours,
+                width: 150
+            },
+            {
+              title: 'Started',
+              dataIndex: 'started',
+              key: 'started',
+              render: (value) => value ? 'Yes' : 'No',
+              width: 100
+            },
+            {
+              title: 'Running',
+              dataIndex: 'running',
+              key: 'running',
+              render: (value) => value ? 'Yes' : 'No',
+              width: 100
             }
         ],
     },

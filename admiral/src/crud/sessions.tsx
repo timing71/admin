@@ -1,9 +1,50 @@
-import React from 'react';
-import { createCRUD, CreateParams, DataProvider, DatePickerInput, DeleteParams, GetListResult, GetOneParams, IRecord, ReorderParams, TextInput, UpdateParams } from '@devfamily/admiral';
-import { format } from 'date-fns';
+import React, { useEffect } from 'react';
+import { createCRUD, CreateParams, DataProvider, DatePickerInput, DeleteParams, GetOneParams, ReorderParams, TextInput, UpdateParams, useForm } from '@devfamily/admiral';
+import { add, format, formatISO, getSeconds, isBefore, set } from 'date-fns';
 
 import _ from '../config/request';
 import dataProvider from '../config/dataProvider';
+
+const SessionForm = () => {
+
+  const { setValues, values: { endTime, start, ...values } } = useForm();
+
+  useEffect(
+    () => {
+      if (start) {
+        const parsedStart = new Date(start);
+        // Ensure seconds component of date is always 0
+        if (getSeconds(parsedStart) !== 0) {
+          setValues({ start: formatISO(set(parsedStart, { seconds: 0 })), endTime, ...values });
+        }
+        else {
+          const parsedEndTime = new Date(endTime);
+          // Default end time to one hour after start time; re-set the end time
+          // if necessary to ensure it's after start time if it already exists.
+          if (!endTime || isBefore(parsedEndTime, parsedStart)) {
+            setValues({
+              endTime: formatISO(
+                add(parsedStart, { hours: 1 })
+              ),
+              start,
+              ...values
+            });
+          }
+        }
+      }
+    },
+    [start]
+  )
+
+  return (
+    <>
+      <TextInput label="Description" name="description" placeholder="Session description" required />
+      <TextInput label="Source" name="source" placeholder="Data source URL" required />
+      <DatePickerInput label="Start time" name="start" required showTime showSecond={false} />
+      <DatePickerInput label="End time" name="endTime" required showTime showSecond={false} />
+    </>
+  )
+}
 
 export const CRUD = createCRUD({
     path: '/sessions',
@@ -64,28 +105,21 @@ export const CRUD = createCRUD({
     form: {
         create: {
           fields: (
-            <>
-              <TextInput label="Description" name="description" placeholder="Session description" required />
-              <TextInput label="Source" name="source" placeholder="Data source URL" required />
-              <DatePickerInput label="Start time" name="start" required showTime showSecond={false} />
-              <DatePickerInput label="End time" name="endTime" required showTime showSecond={false} />
-            </>
+            <SessionForm />
           ),
         },
         edit: {
           fields: (
-              <>
-                <TextInput label="Description" name="description" placeholder="Session description" required />
-                <TextInput label="Source" name="source" placeholder="Data source URL" required />
-                <DatePickerInput label="Start time" name="start" required showTime showSecond={false} />
-                <DatePickerInput label="End time" name="endTime" required showTime showSecond={false} />
-              </>
+              <SessionForm />
           ),
         },
     },
     update: {
         title: (id: string) => `Edit Session ${id}`,
     },
+    create: {
+      title: "Add new session"
+    }
 });
 
 /**

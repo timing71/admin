@@ -10,6 +10,7 @@ import { errorsDataProvider } from './crud/errors/dataProvider'
 import { dvrDataProvider } from './crud/sessions'
 // import themeLight from './config/theme/themeLight'
 // import themeDark from './config/theme/themeDark'
+import Logo from '../assets/logo.png';
 
 const apiUrl = import.meta.env.VITE_ADMIN_API_URL || '/api'
 const dvrApiUrl = import.meta.env.VITE_DVR_API_URL || 'https://dvr.timing71.org';
@@ -31,6 +32,7 @@ function App() {
         <Admin
             dataProvider={mdp}
             authProvider={authProvider(apiUrl)}
+            logo={Logo}
             menu={menu}
             // themePresets={{ light: themeLight, dark: themeDark }}
         >

@@ -272,10 +272,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@devfamily/admiral@5.9.5":
-  version "5.9.5"
-  resolved "https://registry.yarnpkg.com/@devfamily/admiral/-/admiral-5.9.5.tgz#14a8d60cd17c95c560efd1aed27a3d77fc0c423c"
-  integrity sha512-rvHaBGsCjth4ptsGWXpXVPh2nFvpfsoNbFxu3dngOy3j9v7zPhFGlqZpgg9O48xy1pjjiIrN6mr1UbiU5+LwQw==
+"@devfamily/admiral@^5.0.0":
+  version "5.12.0"
+  resolved "https://registry.yarnpkg.com/@devfamily/admiral/-/admiral-5.12.0.tgz#8ccf0a7bbdc69d0a167ef2e5e2d0696e74b6c2b2"
+  integrity sha512-BLoqO0qDl6boLTahpKfLhkwJb3GkX8NiyF3B3FRtqJQ/jo37gTEahcZqfLnNZALHWFJniVH71tzABq3HimY/Eg==
   dependencies:
     "@consta/uikit" "^3.18.0"
     "@dnd-kit/core" "^5.0.3"

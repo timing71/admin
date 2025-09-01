@@ -7,7 +7,7 @@
         "serve": "vite preview"
     },
     "dependencies": {
-        "@devfamily/admiral": "5.9.5",
+        "@devfamily/admiral": "^5.0.0",
         "axios": "^0.26.1",
         "classnames": "^2.3.1",
         "date-fns": "^2.29.0",
